@@ -28,7 +28,6 @@ public class MiJuego extends Game {
 
 	@Override
 	public void render () {
-		//Mal hecho, cuando veamos por qué no se llama, hay que cambiarlo.
 		pantallaActual.render(Gdx.graphics.getDeltaTime());
 
 	}
