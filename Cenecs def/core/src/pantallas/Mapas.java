@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import es.cenecmalaga.ddayvacp.MiJuego;
 
 public class Mapas extends BaseScreen{
-    public Mapas(MiJuego g,String M ){
-        super(g);
-        this.fondo=new Texture("fondos/"+M+".jpg");
+    public Mapas(MiJuego g,String m ){
+        super(g,m);
+        this.fondo=new Texture("fondos/"+m+".jpg");
     }
 }
