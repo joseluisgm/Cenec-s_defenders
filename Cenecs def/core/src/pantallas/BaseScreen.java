@@ -28,15 +28,14 @@ public class BaseScreen implements Screen {
 
         if (mapa.equals("mapa1")) {
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
-            pantalla.addActor(new Cenec("",Gdx.graphics.getWidth()/2,
-                    Gdx.graphics.getHeight()/2));
-            pantalla.addActor(new Torreta("",100,100));
-            pantalla.addActor(new Torreta("",100,100));
-            pantalla.addActor(new Torreta("",100,100));
-            pantalla.addActor(new Torreta2("",100,100));
-            pantalla.addActor(new Torreta2("",100,100));
-            pantalla.addActor(new Torreta3("",100,100));
-            pantalla.addActor(new Torreta4("",100,100));
+            pantalla.addActor(new Cenec("estructura/cenec.png",100,100));
+            pantalla.addActor(new Torreta("estructura/torreta.png",100,100));
+            pantalla.addActor(new Torreta("estructura/torreta.png",100,100));
+            pantalla.addActor(new Torreta("estructura/torreta.png",100,100));
+            pantalla.addActor(new Torreta2("estructura/torreta2.png",100,100));
+            pantalla.addActor(new Torreta2("estructura/torreta2.png",100,100));
+            pantalla.addActor(new Torreta3("estructura/torreta3.png",100,100));
+            pantalla.addActor(new Torreta4("estructura/torreta4.png",100,100));
             //Grupo de enemigos
             enemigos=new Group();
             for(int i=0;i<20;i++) {
@@ -62,9 +61,12 @@ public class BaseScreen implements Screen {
                         x = -100;
                     }
                 }
-                 enemigos.addActor(new Mosca("",x,y));
+                 enemigos.addActor(new Mosca("enemigos/mosca.png",x,y));
             }
             pantalla.addActor(enemigos);
+
+
+
         }
         if (mapa.equals("mapa2")) {
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
