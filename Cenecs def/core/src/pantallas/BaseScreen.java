@@ -32,11 +32,12 @@ public class BaseScreen implements Screen {
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
             pantalla.addActor(new Cenec("estructura/cenec.png",1300,800));
             pantalla.addActor(new Torreta("estructura/torreta.png",500,500));
-
-            pantalla.addActor(new Torreta2("estructura/torreta2.png",800,800));
-
-            pantalla.addActor(new Torreta3("estructura/torreta3.png",400,800));
-            pantalla.addActor(new Torreta4("estructura/torreta4.png",1400,1000));
+            pantalla.addActor(new Torreta("estructura/torreta.png",800,800));
+            pantalla.addActor(new Torreta("estructura/torreta.png",1000,1000));
+            pantalla.addActor(new Torreta2("estructura/torreta2.png",600,600));
+            pantalla.addActor(new Torreta2("estructura/torreta2.png",900,500));
+            pantalla.addActor(new Torreta3("estructura/torreta3.png",500,800));
+            pantalla.addActor(new Torreta4("estructura/torreta4.png",1000,400));
             //Grupo de enemigos
             enemigos=new Group();
             for(int i=0;i<20;i++) {
