@@ -15,6 +15,7 @@ public class Proyectil extends Actor {
         this.setOrigin(this.sprite.getWidth()/2,this.sprite.getHeight()/2);
         this.setSize(Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
         sprite.setOrigin(this.getOriginX(),this.getOriginY());
+
     }
 
 

@@ -2,6 +2,7 @@ package pantallas;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,6 +22,7 @@ public class BaseScreen implements Screen {
     protected MiJuego game;
     protected Stage pantalla;
     private Group enemigos;
+
     protected Texture fondo;
     public BaseScreen(MiJuego g , String mapa) {
         game=g;
@@ -28,14 +30,13 @@ public class BaseScreen implements Screen {
 
         if (mapa.equals("mapa1")) {
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
-            pantalla.addActor(new Cenec("estructura/cenec.png",100,100));
-            pantalla.addActor(new Torreta("estructura/torreta.png",100,100));
-            pantalla.addActor(new Torreta("estructura/torreta.png",100,100));
-            pantalla.addActor(new Torreta("estructura/torreta.png",100,100));
-            pantalla.addActor(new Torreta2("estructura/torreta2.png",100,100));
-            pantalla.addActor(new Torreta2("estructura/torreta2.png",100,100));
-            pantalla.addActor(new Torreta3("estructura/torreta3.png",100,100));
-            pantalla.addActor(new Torreta4("estructura/torreta4.png",100,100));
+            pantalla.addActor(new Cenec("estructura/cenec.png",1300,800));
+            pantalla.addActor(new Torreta("estructura/torreta.png",500,500));
+
+            pantalla.addActor(new Torreta2("estructura/torreta2.png",800,800));
+
+            pantalla.addActor(new Torreta3("estructura/torreta3.png",400,800));
+            pantalla.addActor(new Torreta4("estructura/torreta4.png",1400,1000));
             //Grupo de enemigos
             enemigos=new Group();
             for(int i=0;i<20;i++) {
@@ -45,20 +46,20 @@ public class BaseScreen implements Screen {
                 if(op.nextBoolean()) {
                     Random r = new Random();
                     if (r.nextBoolean()) {
-                        x = 100;
-                        y = 100;
+                        x = 800;
+                        y = 1300;
                     } else {
-                        x = -100;
-                        y = -100;
+                        x = -800;
+                        y = 1300;
                     }
                 }else {
                     Random t = new Random();
                     if (t.nextBoolean()) {
-                        y = 100;
-                        x = 100;
+                        y = 800;
+                        x = 1300;
                     } else {
-                        y = -100;
-                        x = -100;
+                        y = -800;
+                        x = 1300;
                     }
                 }
                  enemigos.addActor(new Mosca("enemigos/mosca.png",x,y));
@@ -242,7 +243,17 @@ public class BaseScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        //Color de limpieza blanco por las transparencias
+        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        //Dibujo el fondo de pantalla
+        pantalla.getBatch().begin();
+        pantalla.getBatch().draw(fondo, 0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        pantalla.getBatch().end();
 
+        pantalla.getBatch().setColor(pantalla.getBatch().getColor().r,pantalla.getBatch().getColor().g,pantalla.getBatch().getColor().b,0.5f);
+        pantalla.act(delta); //Realizamos las acciones dibujando el tiempo transcurrido entre frame y frame
+        pantalla.draw();
     }
 
     @Override

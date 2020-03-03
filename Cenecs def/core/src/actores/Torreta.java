@@ -12,6 +12,7 @@ public class Torreta extends Actor {
         sprite=new Sprite(new Texture(rutaTextura));
         sprite.setBounds(0,0, Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
         this.setOrigin(x,y);
+        this.setPosition(x,y);
         this.setSize(Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
         sprite.setOrigin(this.getOriginX(),this.getOriginY());
     }

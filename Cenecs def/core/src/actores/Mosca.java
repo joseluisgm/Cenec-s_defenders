@@ -11,6 +11,7 @@ public class Mosca extends Actor {
     protected Sprite sprite;
     public Mosca(String rutaTextura ,float x, float y){
         sprite=new Sprite(new Texture(rutaTextura));
+        this.setPosition(x,y);
         sprite.setBounds(x,y, Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
 
         this.setOrigin(this.sprite.getWidth()/2,this.sprite.getHeight()/2);

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contenedorGlobal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.cenecmalaga.lanzamiento.MainActivity">
+
+    <ImageView
+        android:id="@+id/imagenFondo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondoact1" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/elementos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="168dp"
+            android:background="@color/cuaternario_claro"
+            android:onClick="lanzarJuego4"
+            android:text="mapa4"
+            android:textColor="@color/cuaternario_oscuro"
+            android:textColorHighlight="@color/cuaternario_claro"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="168dp"
+            android:background="@color/cuaternario_claro"
+            android:onClick="lanzarJuego2"
+            android:text="mapa2"
+            android:textColor="@color/cuaternario_oscuro"
+            android:textColorHighlight="@color/cuaternario_claro"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/botonJugar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="168dp"
+            android:background="@color/cuaternario_claro"
+            android:onClick="lanzarJuego3"
+            android:text="mapa3"
+            android:textColor="@color/cuaternario_oscuro"
+            android:textColorHighlight="@color/cuaternario_claro"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="168dp"
+            android:background="@color/cuaternario_claro"
+            android:onClick="lanzarJuego5"
+            android:text="mapa5"
+            android:textColor="@color/cuaternario_oscuro"
+            android:textColorHighlight="@color/cuaternario_claro"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/botonJugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="168dp"
+            android:background="@color/cuaternario_claro"
+            android:onClick="lanzarJuego"
+            android:text="mapa1"
+            android:textColor="@color/cuaternario_oscuro"
+            android:textColorHighlight="@color/cuaternario_claro"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</FrameLayout>
