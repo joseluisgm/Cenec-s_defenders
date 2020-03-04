@@ -32,10 +32,8 @@ public class BaseScreen implements Screen {
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
             pantalla.addActor(new Cenec("estructura/cenec.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2));
             pantalla.addActor(new Torreta("estructura/torreta.png",Gdx.graphics.getWidth()-700,Gdx.graphics.getHeight()/9+370));
-            pantalla.addActor(new Torreta("estructura/torreta.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/8));
-            pantalla.addActor(new Torreta("estructura/torreta.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/7));
-            pantalla.addActor(new Torreta2("estructura/torreta2.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/6));
-            pantalla.addActor(new Torreta2("estructura/torreta2.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/5));
+            pantalla.addActor(new Torreta("estructura/torreta.png",Gdx.graphics.getWidth()-700,Gdx.graphics.getHeight()-450));
+            pantalla.addActor(new Torreta2("estructura/torreta2.png",Gdx.graphics.getWidth()/5.5f,Gdx.graphics.getHeight()/5f));
             pantalla.addActor(new Torreta3("estructura/torreta3.png",Gdx.graphics.getWidth()/9,Gdx.graphics.getHeight()/3+650));
             pantalla.addActor(new Torreta4("estructura/torreta4.png",Gdx.graphics.getWidth()/9,Gdx.graphics.getHeight()/3+30));
             //Grupo de enemigos
@@ -254,7 +252,6 @@ public class BaseScreen implements Screen {
         pantalla.getBatch().begin();
         pantalla.getBatch().draw(fondo, 0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         pantalla.getBatch().end();
-
         pantalla.getBatch().setColor(pantalla.getBatch().getColor().r,pantalla.getBatch().getColor().g,pantalla.getBatch().getColor().b,0.5f);
         pantalla.act(delta); //Realizamos las acciones dibujando el tiempo transcurrido entre frame y frame
         pantalla.draw();

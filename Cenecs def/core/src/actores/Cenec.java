@@ -14,8 +14,8 @@ public class Cenec extends Actor {
 
     public Cenec(String rutaTextura,float x,float y) {
         sprite=new Sprite(new Texture(rutaTextura));
-        sprite.setBounds(x,y, 100,100);
-        this.setSize(100,100);
+        sprite.setBounds(x,y, 200,150);
+        this.setSize(200,150);
         this.setPosition(x,y); //Cambio posición del actor
         this.setOrigin(this.sprite.getWidth()/2,this.sprite.getHeight()/2);
         sprite.setOrigin(this.getOriginX(),this.getOriginY());

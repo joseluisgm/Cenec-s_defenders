@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Torreta extends Actor {
     protected Sprite sprite;
-    public Torreta(String rutaTextura,int x,int y ){
+    public Torreta(String rutaTextura,float x,float y ){
         sprite=new Sprite(new Texture(rutaTextura));
         sprite.setBounds(0,0, Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
         this.setOrigin(x,y);
