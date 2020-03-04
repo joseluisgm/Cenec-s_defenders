@@ -6,6 +6,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveByAction;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
+import com.badlogic.gdx.scenes.scene2d.actions.ParallelAction;
+import com.badlogic.gdx.scenes.scene2d.actions.RotateByAction;
+import com.badlogic.gdx.scenes.scene2d.actions.RotateToAction;
+import com.badlogic.gdx.scenes.scene2d.actions.ScaleByAction;
+import com.badlogic.gdx.scenes.scene2d.actions.ScaleToAction;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 
 import java.util.Random;
@@ -22,7 +29,10 @@ public class BaseScreen implements Screen {
     protected MiJuego game;
     protected Stage pantalla;
     private Group enemigos;
-
+    private RotateByAction rba=new RotateByAction();
+    private MoveByAction mba=new MoveByAction();
+    private MoveToAction mta=new MoveToAction();
+    private ScaleByAction sba=new ScaleByAction();
     protected Texture fondo;
     public BaseScreen(MiJuego g , String mapa) {
         game=g;
@@ -63,9 +73,18 @@ public class BaseScreen implements Screen {
                     }
                 }
                  enemigos.addActor(new Mosca("enemigos/mosca.png",x,y));
+                mta.setPosition(0,0);
+                mta.setDuration(20);
+                RotateToAction rta=new RotateToAction();
+                rta.setRotation(0);
+                rta.setDuration(2);
+                ScaleToAction sta=new ScaleToAction();
+                sta.setScale(1);
+                sta.setDuration(2);
+                ParallelAction pa=new ParallelAction(mta,rta,sta);
+                enemigos.addAction(pa);
             }
-
-
+            Gdx.input.setInputProcessor(pantalla);
             pantalla.addActor(enemigos);
 
 
@@ -254,6 +273,9 @@ public class BaseScreen implements Screen {
         pantalla.getBatch().end();
         pantalla.getBatch().setColor(pantalla.getBatch().getColor().r,pantalla.getBatch().getColor().g,pantalla.getBatch().getColor().b,0.5f);
         pantalla.act(delta); //Realizamos las acciones dibujando el tiempo transcurrido entre frame y frame
+
+
+
         pantalla.draw();
     }
 
