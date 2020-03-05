@@ -101,6 +101,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <FrameLayout
+            android:id="@+id/logoFrame"
+            android:layout_width="179dp"
+            android:layout_height="96dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </FrameLayout>
+
     </android.support.constraint.ConstraintLayout>
 
 
