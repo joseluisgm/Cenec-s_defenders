@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Proyectil extends Actor {
+public class Proyectil extends Personaje {
     protected Sprite sprite;
     public Proyectil(String rutaTextura ){
         sprite=new Sprite(new Texture(rutaTextura));

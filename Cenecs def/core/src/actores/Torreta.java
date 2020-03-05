@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Torreta extends Actor {
+public class Torreta extends Personaje {
     protected Sprite sprite;
     public Torreta(String rutaTextura,float x,float y ){
         sprite=new Sprite(new Texture(rutaTextura));

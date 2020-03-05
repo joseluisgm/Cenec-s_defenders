@@ -1,5 +1,6 @@
 package escuchadores;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -26,7 +27,7 @@ public class EscuchadorEnemigo extends InputListener {
         MoveToAction mta=new MoveToAction();
         switch (keycode){
             case Input.Keys.R: //Reset, volver al 0,0
-                mta.setPosition(0,0);
+                mta.setPosition(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
                 mta.setDuration(2);
                 RotateToAction rta=new RotateToAction();
                 rta.setRotation(0);

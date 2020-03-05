@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveByAction;
@@ -19,11 +20,13 @@ import java.util.Random;
 
 import actores.Cenec;
 import actores.Mosca;
+import actores.Personaje;
 import actores.Torreta;
 import actores.Torreta2;
 import actores.Torreta3;
 import actores.Torreta4;
 import es.cenecmalaga.ddayvacp.MiJuego;
+import escuchadores.EscuchadorEnemigo;
 
 public class BaseScreen implements Screen {
     protected MiJuego game;
@@ -73,19 +76,13 @@ public class BaseScreen implements Screen {
                     }
                 }
                  enemigos.addActor(new Mosca("enemigos/mosca.png",x,y));
-                mta.setPosition(0,0);
-                mta.setDuration(20);
-                RotateToAction rta=new RotateToAction();
-                rta.setRotation(0);
-                rta.setDuration(2);
-                ScaleToAction sta=new ScaleToAction();
-                sta.setScale(1);
-                sta.setDuration(2);
-                ParallelAction pa=new ParallelAction(mta,rta,sta);
-                enemigos.addAction(pa);
+
+            }
+            pantalla.addActor(enemigos);
+            for (Actor enemigo: enemigos.getChildren()){
+                enemigos.addListener(new EscuchadorEnemigo((Personaje) enemigo));
             }
             Gdx.input.setInputProcessor(pantalla);
-            pantalla.addActor(enemigos);
 
 
 
@@ -128,8 +125,10 @@ public class BaseScreen implements Screen {
                     }
                 }
                 enemigos.addActor(new Mosca("",x,y));
+               
             }
             pantalla.addActor(enemigos);
+            
         }
         if (mapa.equals("mapa3")) {
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));

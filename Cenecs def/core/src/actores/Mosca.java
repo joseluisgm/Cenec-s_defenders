@@ -7,9 +7,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Mosca extends Actor {
+public class Mosca extends Personaje {
     protected Sprite sprite;
     public Mosca(String rutaTextura ,float x, float y){
+        super();
         sprite=new Sprite(new Texture(rutaTextura));
         this.setPosition(x,y);
         sprite.setBounds(x,y, Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
