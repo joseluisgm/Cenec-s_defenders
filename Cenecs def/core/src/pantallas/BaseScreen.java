@@ -25,6 +25,7 @@ import actores.Torreta;
 import actores.Torreta2;
 import actores.Torreta3;
 import actores.Torreta4;
+import basededatos.BaseDeDatos;
 import es.cenecmalaga.ddayvacp.MiJuego;
 import escuchadores.EscuchadorEnemigo;
 
@@ -36,12 +37,16 @@ public class BaseScreen implements Screen {
     private MoveByAction mba=new MoveByAction();
     private MoveToAction mta=new MoveToAction();
     private ScaleByAction sba=new ScaleByAction();
+    private BaseDeDatos baseDeDatos;
     protected Texture fondo;
-    public BaseScreen(MiJuego g , String mapa) {
+    public BaseScreen(MiJuego g , String mapa,BaseDeDatos bd) {
         game=g;
+        baseDeDatos=bd;
         //we initialize the stage
 
         if (mapa.equals("mapa1")) {
+            int aux= baseDeDatos.cargar();
+            baseDeDatos.guardar(aux+1);
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
             pantalla.addActor(new Cenec("estructura/cenec.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2));
             pantalla.addActor(new Torreta("estructura/torreta.png",Gdx.graphics.getWidth()-700,Gdx.graphics.getHeight()/9+370));
