@@ -67,6 +67,11 @@ class MainActivity : AppCompatActivity() {
         i.putExtras(bundle)
         this.startActivity(i)
     }
+
+    override fun onBackPressed() {
+        
+        super.onBackPressed()
     }
+}
 
 
