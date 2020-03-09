@@ -114,6 +114,17 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/textoInt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="36dp"
+            android:text="intentos hechos : "
+            app:layout_constraintStart_toEndOf="@+id/logoFrame"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
 

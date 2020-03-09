@@ -21,7 +21,7 @@ public class MiJuego extends Game {
 
 	@Override
 	public void create() {
-		this.setPantallaActual(new Mapas(this,mapa));
+		this.setPantallaActual(new Mapas(this,mapa,baseDeDatos));
 	}
 
 	public void setPantallaActual(BaseScreen pa){

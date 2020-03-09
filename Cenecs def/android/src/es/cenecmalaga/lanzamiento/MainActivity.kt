@@ -7,8 +7,9 @@ import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.view.View
+import basededatos.BaseDeDatosCenecsDef
 import es.cenecmalaga.ddayvacp.R
-import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.logoFrame,logo,"logo_game")
         transaction.addToBackStack("logo_game")
         transaction.commit()
+        var bd= BaseDeDatosCenecsDef(this)
+        var aux= bd.cargar()
+        textoInt.text = "Intentos hechos :"+aux+":"
     }
     fun lanzarJuego(view: View) {
         val i = Intent(
