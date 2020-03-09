@@ -11,6 +11,7 @@ public class Mosca extends Personaje {
     protected Sprite sprite;
     public Mosca(String rutaTextura ,float x, float y){
         super();
+        colliding=false;
         sprite=new Sprite(new Texture(rutaTextura));
         this.setPosition(x,y);
         sprite.setBounds(x,y, Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);

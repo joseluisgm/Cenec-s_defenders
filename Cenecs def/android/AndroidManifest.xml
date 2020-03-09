@@ -13,13 +13,19 @@
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout"
             android:screenOrientation="landscape"
             />
+
         <activity android:name="es.cenecmalaga.lanzamiento.MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name="servicio.Servicio"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

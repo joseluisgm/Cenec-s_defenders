@@ -18,7 +18,7 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 
 import java.util.Random;
 
-import actores.Cenec;
+import estructura.Cenec;
 import actores.Mosca;
 import actores.Personaje;
 import actores.Torreta;
@@ -28,6 +28,7 @@ import actores.Torreta4;
 import basededatos.BaseDeDatos;
 import es.cenecmalaga.ddayvacp.MiJuego;
 import escuchadores.EscuchadorEnemigo;
+import estructura.Estructura;
 
 public class BaseScreen implements Screen {
     protected MiJuego game;
@@ -43,7 +44,6 @@ public class BaseScreen implements Screen {
         game=g;
         baseDeDatos=bd;
         //we initialize the stage
-
         if (mapa.equals("mapa1")) {
             int aux= baseDeDatos.cargar();
             baseDeDatos.guardar(aux+1);
@@ -56,42 +56,16 @@ public class BaseScreen implements Screen {
             pantalla.addActor(new Torreta4("estructura/torreta4.png",Gdx.graphics.getWidth()/9,Gdx.graphics.getHeight()/3+30));
             //Grupo de enemigos
             enemigos=new Group();
-            for(int i=0;i<20;i++) {
-                float x;
-                float y;
-
-                Random op=new Random();
-                if(op.nextBoolean()) {
-                    Random r = new Random();
-                    if (r.nextBoolean()) {
-                        x = Gdx.graphics.getWidth()/10+i;
-                        y = Gdx.graphics.getHeight()/2;
-                    } else {
-                        x = Gdx.graphics.getWidth()-200-i;
-                        y = Gdx.graphics.getHeight()/2;
-                    }
-                }else {
-                    Random t = new Random();
-                    if (t.nextBoolean()) {
-                        x = Gdx.graphics.getWidth()/2;
-                        y = Gdx.graphics.getHeight()/10+i;
-                    } else {
-                        x = Gdx.graphics.getWidth()/2;
-                        y = Gdx.graphics.getHeight()-200-i;
-                    }
-                }
-                 enemigos.addActor(new Mosca("enemigos/mosca.png",x,y));
-
-            }
+            enemigos.addActor(new Mosca("enemigos/mosca.png",Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/2));
+            enemigos.addActor(new Mosca("enemigos/mosca.png",Gdx.graphics.getWidth()-200,Gdx.graphics.getHeight()/2));
+            enemigos.addActor(new Mosca("enemigos/mosca.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/10));
+            enemigos.addActor(new Mosca("enemigos/mosca.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()-200));
             pantalla.addActor(enemigos);
             for (Actor enemigo: enemigos.getChildren()){
                 enemigos.addListener(new EscuchadorEnemigo((Personaje) enemigo));
-
             }
             Gdx.input.setInputProcessor(pantalla);
-
-
-
+            pantalla.setKeyboardFocus(pantalla.getActors().get(6));
         }
         if (mapa.equals("mapa2")) {
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
@@ -274,15 +248,38 @@ public class BaseScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //Dibujo el fondo de pantalla
         pantalla.getBatch().begin();
-        pantalla.getBatch().draw(fondo, 0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        pantalla.getBatch().draw(fondo, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         pantalla.getBatch().end();
-        pantalla.getBatch().setColor(pantalla.getBatch().getColor().r,pantalla.getBatch().getColor().g,pantalla.getBatch().getColor().b,0.5f);
+        pantalla.getBatch().setColor(pantalla.getBatch().getColor().r, pantalla.getBatch().getColor().g, pantalla.getBatch().getColor().b, 0.5f);
         pantalla.act(delta); //Realizamos las acciones dibujando el tiempo transcurrido entre frame y frame
-
-
-
         pantalla.draw();
+        MoveToAction mta=new MoveToAction();
+        mta.setPosition(Gdx.graphics.getWidth()/100,Gdx.graphics.getHeight()/100);
+        mta.setDuration(20);
+        enemigos.addAction(mta);
+        for (int i = 0; i < pantalla.getActors().size; i++) {
+            try {
+                Personaje per = (Personaje) pantalla.getActors().get(i);
+                for (int j = 0; j < pantalla.getActors().size; j++) {
+                    try {
+                        Estructura obj = (Estructura) pantalla.getActors().get(j);
+                        if (per.checkCollision(obj)) {
+                            per.addObjeto(obj);
+                            pantalla.getActors().get(j).remove();
+                        }
+
+                        } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 
     @Override
     public void resize(int width, int height) {

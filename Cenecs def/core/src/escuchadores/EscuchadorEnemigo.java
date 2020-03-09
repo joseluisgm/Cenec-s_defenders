@@ -27,6 +27,7 @@ public class EscuchadorEnemigo extends InputListener {
         MoveToAction mta=new MoveToAction();
         switch (keycode){
             case Input.Keys.R: //Reset, volver al 0,0
+
                 mta.setPosition(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
                 mta.setDuration(2);
                 RotateToAction rta=new RotateToAction();
