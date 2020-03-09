@@ -34,10 +34,6 @@ public class BaseScreen implements Screen {
     protected MiJuego game;
     protected Stage pantalla;
     private Group enemigos;
-    private RotateByAction rba=new RotateByAction();
-    private MoveByAction mba=new MoveByAction();
-    private MoveToAction mta=new MoveToAction();
-    private ScaleByAction sba=new ScaleByAction();
     private BaseDeDatos baseDeDatos;
     protected Texture fondo;
     public BaseScreen(MiJuego g , String mapa,BaseDeDatos bd) {
@@ -48,7 +44,7 @@ public class BaseScreen implements Screen {
             int aux= baseDeDatos.cargar();
             baseDeDatos.guardar(aux+1);
             pantalla=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()));
-            pantalla.addActor(new Cenec("estructura/cenec.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2));
+           pantalla.addActor(new Cenec("estructura/cenec.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2));
             pantalla.addActor(new Torreta("estructura/torreta.png",Gdx.graphics.getWidth()-700,Gdx.graphics.getHeight()/9+370));
             pantalla.addActor(new Torreta("estructura/torreta.png",Gdx.graphics.getWidth()-700,Gdx.graphics.getHeight()-450));
             pantalla.addActor(new Torreta2("estructura/torreta2.png",Gdx.graphics.getWidth()/5.5f,Gdx.graphics.getHeight()/5f));
@@ -62,8 +58,10 @@ public class BaseScreen implements Screen {
             enemigos.addActor(new Mosca("enemigos/mosca.png",Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()-200));
             pantalla.addActor(enemigos);
             for (Actor enemigo: enemigos.getChildren()){
-                enemigos.addListener(new EscuchadorEnemigo((Personaje) enemigo));
+                enemigos.addListener((new EscuchadorEnemigo((Personaje) enemigo)));
             }
+
+
             Gdx.input.setInputProcessor(pantalla);
             pantalla.setKeyboardFocus(pantalla.getActors().get(6));
         }
@@ -253,12 +251,10 @@ public class BaseScreen implements Screen {
         pantalla.getBatch().setColor(pantalla.getBatch().getColor().r, pantalla.getBatch().getColor().g, pantalla.getBatch().getColor().b, 0.5f);
         pantalla.act(delta); //Realizamos las acciones dibujando el tiempo transcurrido entre frame y frame
         pantalla.draw();
-        MoveToAction mta=new MoveToAction();
-        mta.setPosition(Gdx.graphics.getWidth()/100,Gdx.graphics.getHeight()/100);
-        mta.setDuration(20);
-        enemigos.addAction(mta);
+
         for (int i = 0; i < pantalla.getActors().size; i++) {
             try {
+
                 Personaje per = (Personaje) pantalla.getActors().get(i);
                 for (int j = 0; j < pantalla.getActors().size; j++) {
                     try {
