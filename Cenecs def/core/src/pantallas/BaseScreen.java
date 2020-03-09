@@ -86,6 +86,7 @@ public class BaseScreen implements Screen {
             pantalla.addActor(enemigos);
             for (Actor enemigo: enemigos.getChildren()){
                 enemigos.addListener(new EscuchadorEnemigo((Personaje) enemigo));
+
             }
             Gdx.input.setInputProcessor(pantalla);
 

@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.Toast;
 
 public class BaseDeDatosCenecsDef implements BaseDeDatos {
     private BDOpenHelper openHelper;
@@ -20,7 +22,7 @@ public class BaseDeDatosCenecsDef implements BaseDeDatos {
                 null,null,null);
         if(c.moveToFirst()){//False si no hay ninguna fila, true si hay una
             //Caso en que ya haya una fila
-            return c.getInt(c.getColumnIndex("intentos"));
+            return c.getInt(c.getColumnIndex("puntos"));
         }else{
             //Si no hay puntuaciones guardadas, empiezo desde 0 puntos
             return 0;
@@ -35,7 +37,7 @@ public class BaseDeDatosCenecsDef implements BaseDeDatos {
                 null,null,null);
 
         ContentValues cv=new ContentValues();
-        cv.put("intentos",intentos);
+        cv.put("puntos",intentos);
 
         if(c.moveToFirst()){ //False si no hay ninguna fila, true si hay una
             //Caso en que ya haya una fila
@@ -46,7 +48,9 @@ public class BaseDeDatosCenecsDef implements BaseDeDatos {
                     null);
         }else{
             //Caso en que la tabla esté vacía
-            db.insert("cenecsIntentos",null,cv);
+            long salida =db.insert("cenecsIntentos",null,cv);
+
+            Log.d("Salida",salida+"");
         }
         c.close();
         db.close();
