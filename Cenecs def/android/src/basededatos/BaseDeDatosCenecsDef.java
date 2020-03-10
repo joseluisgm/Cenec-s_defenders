@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
+
 
 public class BaseDeDatosCenecsDef implements BaseDeDatos {
     private BDOpenHelper openHelper;
@@ -14,6 +14,10 @@ public class BaseDeDatosCenecsDef implements BaseDeDatos {
         openHelper=new BDOpenHelper(c,1);
     }
 
+    /**
+     * funcion que carga los datos de la base de datos
+     * @return saca los registros de la base de datos
+     */
     @Override
     public int cargar() {
         SQLiteDatabase db=openHelper.getWritableDatabase();
@@ -29,6 +33,10 @@ public class BaseDeDatosCenecsDef implements BaseDeDatos {
         }
     }
 
+    /**
+     * guarda los datos en la base de datos
+     * @param intentos int que significa los intentos hechos
+     */
     @Override
     public void guardar(int intentos) {
         SQLiteDatabase db=openHelper.getWritableDatabase();

@@ -15,11 +15,17 @@ import actores.Personaje;
 
 public class Cenec extends Estructura {
     protected Sprite sprite;
-    Personaje enemigo;
 
 
+    /**
+     * constructor de estructura que es cenec (si hay que usar la imaginacion )
+     * @param rutaTextura ruta de la imagen
+     * @param x posicion x en el mapa
+     * @param y posicion y en el mapa
+     */
     public Cenec(String rutaTextura,float x,float y) {
         super(rutaTextura);
+        colliding=false;
         sprite=new Sprite(new Texture(rutaTextura));
         sprite.setBounds(x,y, 200,150);
         this.setSize(200,150);
@@ -30,7 +36,11 @@ public class Cenec extends Estructura {
 
     public Rectangle getHitBox() {return sprite.getBoundingRectangle();
     }
-
+    /**
+     * funcion que dibuja la estructura en el mapa
+     * @param batch
+     * @param parentAlpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);

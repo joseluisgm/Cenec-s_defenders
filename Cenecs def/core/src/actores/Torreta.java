@@ -8,7 +8,15 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Torreta extends Personaje {
     protected Sprite sprite;
+
+    /**
+     * constructor de torretas
+     * @param rutaTextura ruta de la imagen
+     * @param x posicion x en el mapa
+     * @param y posicion y en el mapa
+     */
     public Torreta(String rutaTextura,float x,float y ){
+        colliding=false;
         sprite=new Sprite(new Texture(rutaTextura));
         sprite.setBounds(0,0, Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
         this.setOrigin(x,y);
@@ -17,7 +25,11 @@ public class Torreta extends Personaje {
         sprite.setOrigin(this.getOriginX(),this.getOriginY());
     }
 
-
+    /**
+     * funcion que dibuja la torretas en el mapa
+     * @param batch
+     * @param parentAlpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);

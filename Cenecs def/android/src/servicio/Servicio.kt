@@ -12,11 +12,10 @@ import com.badlogic.gdx.utils.IntArray
 
 
 class Servicio : Service() {
-
+//clase que lanza el servicio
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
-
-        Toast.makeText(this, "gracias por jugar a esta basura", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "gracias por jugar a este juego que para nada tiene bugs para nada ", Toast.LENGTH_LONG).show()
         return Service.START_NOT_STICKY
     }
 

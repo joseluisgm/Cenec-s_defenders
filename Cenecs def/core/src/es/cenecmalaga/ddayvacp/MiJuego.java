@@ -7,11 +7,17 @@ import basededatos.BaseDeDatos;
 import pantallas.BaseScreen;
 import pantallas.Mapas;
 
+
 public class MiJuego extends Game {
 	private  String mapa;
 	private BaseScreen pantallaActual;
 	BaseDeDatos baseDeDatos;
 
+	/**
+	 * onstructor de MiJuego
+	 * @param mapa srting de que se usara para crear el mapa
+	 * @param bd base de datos que se usa en el juego
+	 */
 	public MiJuego(String mapa, BaseDeDatos bd)
 	{
 		baseDeDatos=bd;

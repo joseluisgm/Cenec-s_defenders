@@ -9,6 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Mosca extends Personaje {
     protected Sprite sprite;
+
+    /**
+     *
+     * @param rutaTextura es la ruta de la imagen que quiere que sea
+     * @param x la posicion x en el mapa
+     * @param y la posicion y  en el mapa
+     */
     public Mosca(String rutaTextura ,float x, float y){
         super();
         colliding=false;
@@ -23,10 +30,18 @@ public class Mosca extends Personaje {
     }
 
 
-
+    /**
+     * saca la hitbox
+     * @return debuelve el sprite con la gitbox
+     */
     public Rectangle getHitBox() {return sprite.getBoundingRectangle();
     }
 
+    /**
+     * funcion que dibuja la mosca en el mapa
+     * @param batch
+     * @param parentAlpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);

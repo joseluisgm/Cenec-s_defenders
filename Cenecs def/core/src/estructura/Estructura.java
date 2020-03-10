@@ -11,9 +11,15 @@ import com.badlogic.gdx.scenes.scene2d.actions.ParallelAction;
 import com.badlogic.gdx.scenes.scene2d.actions.ScaleByAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
-public class Estructura extends Actor {
+import actores.Personaje;
+
+public class Estructura extends Personaje {
     protected Sprite sprite;
 
+    /**
+     * super constructor de estructura
+     * @param rutaTextura ruta de la imagen para crear el sprite
+     */
     public Estructura(String rutaTextura){
         sprite=new Sprite(new Texture(rutaTextura));
         sprite.setBounds(0,0, Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight()/10);
@@ -22,14 +28,10 @@ public class Estructura extends Actor {
         sprite.setOrigin(this.getOriginX(),this.getOriginY());
     }
 
-
-
-
-    public void destruccion(){
-        this.scaleBy(-2.5f);
-        sprite.scale(-2.5f);
-    }
-
+    /**
+     * saca la hitbox
+     * @return debuelve el sprite con la gitbox
+     */
     public Rectangle getHitBox(){
         return sprite.getBoundingRectangle();
     }
