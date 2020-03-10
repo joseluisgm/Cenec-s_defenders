@@ -256,6 +256,7 @@ public class BaseScreen implements Screen {
             try {
 
                 Personaje per = (Personaje) pantalla.getActors().get(i);
+                Gdx.app.log("CLASE DE PER",per.getClass().getName());
                 for (int j = 0; j < pantalla.getActors().size; j++) {
                     try {
                         Estructura obj = (Estructura) pantalla.getActors().get(j);
@@ -265,7 +266,15 @@ public class BaseScreen implements Screen {
                         }
 
                         } catch (Exception e) {
-                        e.printStackTrace();
+                        Group grupo = (Group) pantalla.getActors().get(j);
+                        for (int t=0;t<grupo.getChildren().size;t++){
+                                Personaje mosca=(Personaje) grupo.getChild(t);
+
+                                if (per.checkCollision(mosca)) {
+                                    per.addObjeto(mosca);
+                                    pantalla.getActors().get(j).remove();
+                                }
+                        }
                     }
 
 
