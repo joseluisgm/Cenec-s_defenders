@@ -33,13 +33,20 @@ import estructura.Estructura;
 public class BaseScreen implements Screen {
     protected MiJuego game;
     protected Stage pantalla;
-    private Group enemigos;
     private BaseDeDatos baseDeDatos;
     protected Texture fondo;
+
+    /**
+     * constructor de BaseScreen
+     * @param g juego
+     * @param mapa string del mapa
+     * @param bd base de datos
+     */
     public BaseScreen(MiJuego g , String mapa,BaseDeDatos bd) {
         game = g;
         baseDeDatos = bd;
         //we initialize the stage
+        //los if cargan cada mapa depende que boton le des si se pulsa el 1 entonces entrara en este if
         if (mapa.equals("mapa1")) {
             int aux = baseDeDatos.cargar();
             baseDeDatos.guardar(aux + 1);
@@ -133,6 +140,10 @@ public class BaseScreen implements Screen {
 
     }
 
+    /**
+     * renderiza todo lo que se le pase si no no se dibuja nada
+     * @param delta 
+     */
     @Override
     public void render(float delta) {
         //Color de limpieza blanco por las transparencias
